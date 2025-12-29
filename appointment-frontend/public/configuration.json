@@ -1,0 +1,12 @@
+{
+//   "VUE_APP_ROOT_API": "http://172.20.21.37:5000/api/v1/",
+  "VUE_APP_ROOT_API": "http://localhost:5000/api/v1/",
+  "VUE_APP_FEEDBACK_API": "",
+  "FEEDBACK_SERVICE_CHANNEL": "appointment-booking",
+  "FEEDBACK_ENABLED": false,
+  "VUE_APP_HEADER_MSG": "",
+  "VUE_APP_HEADER_LINKS": [],
+  "VUE_APP_FOOTER_MSG": "",
+  "VUE_APP_FOOTER_LINKS": [],
+  "disableSms": false
+}

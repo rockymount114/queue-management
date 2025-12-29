@@ -13,26 +13,36 @@ module.exports = {
   },
   
   chainWebpack: config => {
-    // Remove the progress plugin that's causing issues
     config.plugins.delete('progress')
+    
+    // Fix keycloak-js parsing issue
+    config.module
+      .rule('mjs')
+      .test(/\.mjs$/)
+      .include.add(/node_modules/)
+      .end()
+      .type('javascript/auto')
   },
   
-  // publicPath: process.env.VUE_APP_PATH,
-  transpileDependencies: ['vuetify', 'vuex-persist'],
+  transpileDependencies: [
+    'vuetify', 
+    'vuex-persist',
+    'keycloak-js'
+  ],
+  
+  css: {
+    loaderOptions: {
+      scss: {
+        additionalData: `@import "@/assets/scss/theme.scss";`
+      }
+    }
+  },
   
   devServer: {
-    client: {
-      overlay: {
-        warnings: true,
-        errors: true
-      }
-    },
-    // Configure local API calls to hit OpenShift dev
     proxy: {
       '/api/v1': {
         target: 'http://localhost:5000',
-        changeOrigin: true,
-        logLevel: 'debug'
+        changeOrigin: true
       },
       '/api': {
         target: 'http://localhost:5000',
@@ -43,8 +53,6 @@ module.exports = {
         ws: true,
         changeOrigin: true
       }
-    },
-    // Allow using the local proxy across other devices on LAN
-    headers: { 'Access-Control-Allow-Origin': '*' }
+    }
   }
 }
