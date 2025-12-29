@@ -12,7 +12,7 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
-version: '3.7'
+#version: '3.8'
 
 services:
   # The container that contains all the code in the repository, plus the
@@ -29,10 +29,11 @@ services:
         # update to the runtime version. The list of versions available is at
         # https://hub.docker.com/_/microsoft-vscode-devcontainers
         # https://mcr.microsoft.com/v2/vscode/devcontainers/python/tags/list
-        VARIANT: '0.201.2-3.8'
+        #VARIANT: '0.201.2-3.8'
+        VARIANT: '3-bookworm'
 
         # Node.js version to install
-        NODE_VERSION: '20.11.1'
+        NODE_VERSION: '22.17.0'
 
       context: '..'
 

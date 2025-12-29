@@ -23,11 +23,14 @@
 # 3.10-buster, 3.9-buster, 3.8-buster, 3.7-buster, 3.6-buster
 #
 # Note: this ARG is overwritten by the value in docker-compose.yml.
-ARG VARIANT=3-bullseye
+ARG VARIANT=3-bookworm
 FROM mcr.microsoft.com/vscode/devcontainers/python:${VARIANT}
 
 # Force the stdout and stderr streams to be unbuffered.
 ENV PYTHONUNBUFFERED 1
+
+#RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+#RUN sed -i 's/buster/bookworm/g' /etc/apt/sources.list
 
 # [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
 #
