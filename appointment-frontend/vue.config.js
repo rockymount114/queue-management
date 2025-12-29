@@ -15,7 +15,6 @@ module.exports = {
   chainWebpack: config => {
     config.plugins.delete('progress')
     
-    // Fix keycloak-js parsing issue
     config.module
       .rule('mjs')
       .test(/\.mjs$/)
